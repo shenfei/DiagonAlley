@@ -22,8 +22,8 @@ filetype plugin indent on
 
 "===============================
 
-set autoread  " 文件修改后自动载入
-autocmd! bufwritepost .vimrc source %  " vimrc文件修改之后自动加载
+"set autoread  " 文件修改后自动载入
+"autocmd! bufwritepost .vimrc source %  " vimrc文件修改之后自动加载
 
 set ffs=unix,dos,mac
 
@@ -188,7 +188,7 @@ set statusline+=%{fugitive#statusline()}
 
 Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 let g:Tex_ViewRule_pdf = 'evince'
-"let g:tex_flavor = 'pdflatex'
+"let g:tex_flavor = 'xelatex'
 
 "===============================
 
