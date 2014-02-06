@@ -79,7 +79,7 @@ set autoindent  " 换行时自动缩进
 set smartindent
 set cindent
 
-set nowrap
+set wrap
 
 "===============================
 " 一些自定义的 map
@@ -171,9 +171,10 @@ Bundle 'matchit.zip'
 " 代码检查
 "===============================
 Bundle 'scrooloose/syntastic'
+let g:syntastic_python_checkers = ['pyflakes']
 
 Bundle 'kevinw/pyflakes-vim'
-"let g:pyflakes_use_quickfix = 0
+let g:pyflakes_use_quickfix = 0
 
 Bundle 'hdima/python-syntax'
 
