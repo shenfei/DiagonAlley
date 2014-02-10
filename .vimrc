@@ -151,8 +151,17 @@ let g:ctrlp_follow_symlinks = 1
 
 Bundle 'bling/vim-airline'
 let g:airline_theme = 'bubblegum'
-"let g:airline_section_c = '%t %{getcwd()}'
+let g:airline_section_c = '%{getcwd()}/%t'
 let g:airline_section_z = '%l/%L:%c'
+" 设置宽度大于多少时才显示某section
+let g:airline#extensions#default#section_truncate_width = {
+    \ 'a': 50,
+    \ 'b': 60,
+    \ 'gutter': 80,
+    \ 'x': 80,
+    \ 'y': 70,
+    \ 'warning': 80,
+    \ }
 
 "===============================
 
