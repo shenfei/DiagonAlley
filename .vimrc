@@ -17,6 +17,7 @@ set history=500
 " 设置备份
 set backupext=.bak
 set backupdir=~/.vim_bak/
+set noswapfile
 
 filetype plugin indent on
 
