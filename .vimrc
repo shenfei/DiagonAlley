@@ -183,7 +183,7 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 
-Bundle 'Vim-R-plugin'
+"Bundle 'Vim-R-plugin'
 
 Bundle 'matchit.zip'
 
