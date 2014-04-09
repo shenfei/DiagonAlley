@@ -124,8 +124,8 @@ let g:molokai_original = 1
 colorscheme molokai
 hi Visual term=reverse ctermfg=232 ctermbg=226
 hi Comment term=bold ctermfg=243
-"hi PreProc term=bold ctermfg=227
-"hi Function ctermfg=86
+hi PreProc term=bold ctermfg=227
+hi Function ctermfg=86
 
 "Bundle 'chriskempson/vim-tomorrow-theme'
 "colorscheme Tomorrow-Night-Bright
@@ -183,7 +183,7 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 
-"Bundle 'Vim-R-plugin'
+Bundle 'Vim-R-plugin'
 
 Bundle 'matchit.zip'
 
