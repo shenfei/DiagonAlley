@@ -121,9 +121,11 @@ set t_Co=256
 
 Bundle 'tomasr/molokai'
 let g:molokai_original = 1
+let g:rehash256 = 1
 colorscheme molokai
-hi Visual term=reverse ctermfg=232 ctermbg=226
-hi Comment term=bold ctermfg=243
+hi Normal ctermfg=253
+hi Visual term=reverse ctermfg=232 ctermbg=220
+hi Comment term=bold ctermfg=246
 "hi PreProc term=bold ctermfg=227
 "hi Function ctermfg=86
 
