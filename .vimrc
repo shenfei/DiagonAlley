@@ -110,7 +110,7 @@ Bundle 'gmarik/vundle'
 
 "===============================
 
-"Bundle 'altercation/vim-colors-solarized'
+Bundle 'altercation/vim-colors-solarized'
 syntax enable
 set background=dark
 set laststatus=2
@@ -129,8 +129,9 @@ hi Comment term=bold ctermfg=247
 hi LineNr ctermfg=250 ctermbg=236
 "hi PreProc term=bold ctermfg=227
 "hi Function ctermfg=86
+hi Delimiter ctermfg=254
 
-"Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'chriskempson/vim-tomorrow-theme'
 "colorscheme Tomorrow-Night-Bright
 "colorscheme Tomorrow-Night
 "colorscheme Tomorrow-Night-Eighties
