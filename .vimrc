@@ -83,6 +83,7 @@ set cindent
 set wrap
 
 au BufRead,BufNewFile *.md setf markdown
+au BufRead,BufNewFile *.Rmd setf rmd
 
 "===============================
 " 一些自定义的 map
