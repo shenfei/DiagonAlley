@@ -189,6 +189,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 
 Bundle 'Vim-R-plugin'
+let vimrplugin_assign = 0
 
 Bundle 'matchit.zip'
 
