@@ -105,14 +105,15 @@ nnoremap <leader>nh :noh<CR>
 "===============================
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 "===============================
 
-Bundle 'altercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized'
 syntax enable
 set background=dark
 set laststatus=2
@@ -121,7 +122,7 @@ set t_Co=256
 "colorscheme solarized
 "colorscheme pablo
 
-Bundle 'tomasr/molokai'
+Plugin 'tomasr/molokai'
 let g:molokai_original = 1
 let g:rehash256 = 1
 colorscheme molokai
@@ -133,7 +134,7 @@ hi LineNr ctermfg=250 ctermbg=236
 "hi Function ctermfg=86
 hi Delimiter ctermfg=254
 
-Bundle 'chriskempson/vim-tomorrow-theme'
+Plugin 'chriskempson/vim-tomorrow-theme'
 "colorscheme Tomorrow-Night-Bright
 "colorscheme Tomorrow-Night
 "colorscheme Tomorrow-Night-Eighties
@@ -143,15 +144,15 @@ hi Normal ctermbg=NONE
 "===============================
 
 " 文件树形结构
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 map <leader>tt :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc', '\.git', '\.svn', '\.o']
 
-Bundle 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 nnoremap <silent> <F9> :TagbarToggle<CR>
 
 " 文件查找
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
 map <leader>f: CtrlPMRU<CR>
@@ -163,7 +164,7 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_max_height = 15
 let g:ctrlp_follow_symlinks = 1
 
-Bundle 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 let g:airline_theme = 'bubblegum'
 "let g:airline_section_c = '%{getcwd()}/%t'
 let g:airline_section_c = airline#section#create(['%<', '%{getcwd()}', '/', 'file', ' ', 'readonly'])
@@ -180,51 +181,52 @@ let g:airline#extensions#default#section_truncate_width = {
 
 "===============================
 
-Bundle 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-easymotion'
 
-Bundle 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter'
 
-Bundle 'Raimondi/delimitMate'
+Plugin 'Raimondi/delimitMate'
 
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 
-Bundle 'Vim-R-plugin'
+Plugin 'Vim-R-plugin'
 let vimrplugin_assign = 0
 
-Bundle 'matchit.zip'
+Plugin 'matchit.zip'
 
 "===============================
 " 代码检查
 "===============================
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 let g:syntastic_python_checkers = ['pyflakes']
 
-Bundle 'kevinw/pyflakes-vim'
+Plugin 'kevinw/pyflakes-vim'
 let g:pyflakes_use_quickfix = 0
 
-Bundle 'hdima/python-syntax'
+Plugin 'hdima/python-syntax'
 
-Bundle 'plasticboy/vim-markdown'
+Plugin 'plasticboy/vim-markdown'
 
 "===============================
 
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 set statusline+=%{fugitive#statusline()}
 
 "===============================
 
-Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
+Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
 let g:Tex_ViewRule_pdf = 'evince'
 "let g:tex_flavor = 'xelatex'
 
 "===============================
 
 " (TODO)
-"Bundle 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 
 " end of plugin config
 "===============================
 
+"call vundle#end()
 filetype plugin indent on
 
