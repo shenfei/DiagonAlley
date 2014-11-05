@@ -83,7 +83,11 @@ set cindent
 
 set wrap
 
-au BufRead,BufNewFile *.md setf markdown
+augroup markdown
+    au!
+    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+augroup END
+"au BufRead,BufNewFile *.md setf markdown
 au BufRead,BufNewFile *.Rmd setf rmd
 
 "===============================
@@ -206,7 +210,14 @@ let g:pyflakes_use_quickfix = 0
 
 Plugin 'hdima/python-syntax'
 
-Plugin 'plasticboy/vim-markdown'
+"Plugin 'godlygeek/tabular'
+"Plugin 'plasticboy/vim-markdown'
+Plugin 'jtratner/vim-flavored-markdown'
+"hi def link markdownItalic String
+
+"Plugin 'vim-pandoc/vim-pandoc'
+"Plugin 'vim-pandoc/vim-pandoc-syntax'
+"let g:pandoc#syntax#conceal#use = 0
 
 "===============================
 
