@@ -3,6 +3,12 @@
 "================================================================
 
 "===============================
+" 1) mkdir ~/.vim/bundle
+" 2) git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" 3) in vim, :PluginInstall
+"===============================
+
+"===============================
 " => General
 "===============================
 set nocompatible
