@@ -80,6 +80,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias tmux="tmux -2"
 alias gbr="git br -v"
+unalias gm
 
 PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[green]%}%n@%m %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
 
