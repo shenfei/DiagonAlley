@@ -210,6 +210,7 @@ Plugin 'matchit.zip'
 "===============================
 Plugin 'scrooloose/syntastic'
 let g:syntastic_python_checkers = ['pyflakes']
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 Plugin 'kevinw/pyflakes-vim'
 let g:pyflakes_use_quickfix = 0
