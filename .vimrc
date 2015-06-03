@@ -81,7 +81,7 @@ set expandtab  " 将 tab 自动转成空格; 使用 Ctrl + V + Tab 输入真的 
 set smarttab
 
 set shiftwidth=4
-au FileType cpp,c,hpp,h setl shiftwidth=2
+au FileType cpp,c,hpp,h,R,Rmd setl shiftwidth=2
 au FileType html,htm,css setl shiftwidth=2
 set autoindent  " 换行时自动缩进
 set smartindent
