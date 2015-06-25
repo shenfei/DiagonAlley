@@ -202,7 +202,6 @@ Plugin 'tpope/vim-repeat'
 
 Plugin 'Vim-R-plugin'
 let vimrplugin_assign = 0
-let r_indent_align_args = 0
 
 Plugin 'matchit.zip'
 
