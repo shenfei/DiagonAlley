@@ -81,7 +81,7 @@ set expandtab  " 将 tab 自动转成空格; 使用 Ctrl + V + Tab 输入真的 
 set smarttab
 
 set shiftwidth=4
-au FileType cpp,c,hpp,h,R,Rmd setl shiftwidth=2
+au FileType cpp,c,hpp,h,R,Rmd,r,rmd setl shiftwidth=2
 au FileType html,htm,css setl shiftwidth=2
 set autoindent  " 换行时自动缩进
 set smartindent
@@ -202,6 +202,7 @@ Plugin 'tpope/vim-repeat'
 
 Plugin 'Vim-R-plugin'
 let vimrplugin_assign = 0
+let r_indent_align_args = 0
 
 Plugin 'matchit.zip'
 
