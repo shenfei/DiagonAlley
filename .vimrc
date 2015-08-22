@@ -106,6 +106,11 @@ nnoremap <leader>s :w<CR>
 inoremap <leader>s <esc>:w<CR>
 
 nnoremap <leader>nh :noh<CR>
+nnoremap <leader>1 1gt<CR>
+nnoremap <leader>2 2gt<CR>
+nnoremap <leader>3 3gt<CR>
+nnoremap <leader>4 4gt<CR>
+nnoremap <leader>5 5gt<CR>
 
 "===============================
 " 插件设置
@@ -212,6 +217,8 @@ Plugin 'scrooloose/syntastic'
 let g:syntastic_python_checkers = ['pyflakes']
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_remove_include_errors = 1
+"let g:syntastic_cpp_auto_refresh_includes = 1
 
 Plugin 'kevinw/pyflakes-vim'
 let g:pyflakes_use_quickfix = 0
