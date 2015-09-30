@@ -6,6 +6,7 @@
 # and start a new session
 #
 .First <- function() {
+    .libPaths('~/R/library')
     library(colorout)
     setOutputColors256(verbose=FALSE)
 }
