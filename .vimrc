@@ -214,7 +214,10 @@ Plugin 'matchit.zip'
 " 代码检查
 "===============================
 Plugin 'scrooloose/syntastic'
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['pyflakes']
+
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_remove_include_errors = 1
