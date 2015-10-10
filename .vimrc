@@ -205,6 +205,8 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 
+Plugin 'https://github.com/jalvesaq/R-Vim-runtime.git'
+
 Plugin 'Vim-R-plugin'
 let vimrplugin_assign = 0
 
