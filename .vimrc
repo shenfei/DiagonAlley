@@ -89,12 +89,12 @@ set cindent
 
 set wrap
 
-augroup markdown
-    au!
-    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
-augroup END
-"au BufRead,BufNewFile *.md setf markdown
+au BufRead,BufNewFile *.md setf markdown
 au BufRead,BufNewFile *.Rmd setf rmd
+"augroup markdown
+    "au!
+    "au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+"augroup END
 
 "===============================
 " 一些自定义的 map
@@ -230,9 +230,9 @@ let g:pyflakes_use_quickfix = 0
 
 Plugin 'hdima/python-syntax'
 
-"Plugin 'godlygeek/tabular'
-"Plugin 'plasticboy/vim-markdown'
-Plugin 'jtratner/vim-flavored-markdown'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+"Plugin 'jtratner/vim-flavored-markdown'
 "hi def link markdownItalic String
 
 "Plugin 'vim-pandoc/vim-pandoc'
