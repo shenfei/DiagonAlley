@@ -112,6 +112,8 @@ nnoremap <leader>3 3gt<CR>
 nnoremap <leader>4 4gt<CR>
 nnoremap <leader>5 5gt<CR>
 
+nnoremap <leader>mr :vertical resize +15<CR>
+
 "===============================
 " 插件设置
 
