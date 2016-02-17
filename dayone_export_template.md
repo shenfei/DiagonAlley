@@ -18,5 +18,4 @@ Tags: {{ entry['Tags'] }}
 ![Photo for {{entry['Date']|format('%F')}}]({{ entry['Photo'] }})
 {% endif %}
 
-
 {% endfor %}
