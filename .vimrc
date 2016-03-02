@@ -181,7 +181,8 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_max_height = 15
 let g:ctrlp_follow_symlinks = 1
 
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme = 'bubblegum'
 "let g:airline_section_c = '%{getcwd()}/%t'
 let g:airline_section_c = airline#section#create(['%<', '%{getcwd()}', '/', 'file', ' ', 'readonly'])
