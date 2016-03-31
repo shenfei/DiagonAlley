@@ -76,6 +76,8 @@ set t_vb=
 set showmatch
 set mat=2
 
+set nofoldenable " disable folding
+
 " 缩进
 set expandtab  " 将 tab 自动转成空格; 使用 Ctrl + V + Tab 输入真的 tab"
 set smarttab
