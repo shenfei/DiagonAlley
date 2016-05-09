@@ -49,7 +49,7 @@ plugins=(git autojump)
 
 # User configuration
 
-export PATH=$PATH:/Library/Tex/texbin
+export PATH=$HOME/bin:$PATH:/Library/Tex/texbin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
