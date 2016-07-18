@@ -230,9 +230,6 @@ let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_remove_include_errors = 1
 "let g:syntastic_cpp_auto_refresh_includes = 1
 
-Plugin 'kevinw/pyflakes-vim'
-let g:pyflakes_use_quickfix = 0
-
 Plugin 'hdima/python-syntax'
 
 Plugin 'godlygeek/tabular'
