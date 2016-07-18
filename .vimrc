@@ -251,11 +251,6 @@ set statusline+=%{fugitive#statusline()}
 
 "===============================
 
-Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
-let g:Tex_ViewRule_pdf = 'evince'
-"let g:tex_flavor = 'xelatex'
-
-"===============================
 
 " (TODO)
 "Plugin 'Valloric/YouCompleteMe'
