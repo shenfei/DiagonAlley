@@ -106,6 +106,7 @@ map Y y$
 
 nnoremap <leader>s :w<CR>
 inoremap <leader>s <esc>:w<CR>
+cnoremap Q<CR> q<CR>
 
 nnoremap <leader>nh :noh<CR>
 nnoremap <leader>1 1gt<CR>
@@ -214,6 +215,8 @@ Plugin 'https://github.com/jalvesaq/R-Vim-runtime.git'
 
 Plugin 'Vim-R-plugin'
 let vimrplugin_assign = 0
+
+Plugin 'gerw/vim-latex-suite'
 
 Plugin 'matchit.zip'
 
