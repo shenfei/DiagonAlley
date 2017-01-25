@@ -235,6 +235,8 @@ let g:syntastic_cpp_remove_include_errors = 1
 
 Plugin 'hdima/python-syntax'
 
+Plugin 'JuliaEditorSupport/julia-vim'
+
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 "Plugin 'jtratner/vim-flavored-markdown'
