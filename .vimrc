@@ -98,6 +98,7 @@ au BufRead,BufNewFile *.jl setf julia
     "au!
     "au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 "augroup END
+autocmd filetype crontab setlocal nobackup nowritebackup
 
 "===============================
 " 一些自定义的 map
