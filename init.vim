@@ -11,7 +11,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'tomasr/molokai'
 " 文件树形结构
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'majutsushi/tagbar'
 " 文件查找
 Plug 'kien/ctrlp.vim'
@@ -36,73 +36,6 @@ Plug 'tpope/vim-fugitive'
 call plug#end()
 "===============================
 
-set termguicolors
-set laststatus=2
-let g:molokai_original = 1
-let g:rehash256 = 1
-colorscheme molokai
-hi Normal ctermfg=254
-hi Visual term=reverse ctermfg=232 ctermbg=220
-hi Comment term=bold ctermfg=247
-hi LineNr ctermfg=250 ctermbg=236
-"hi PreProc term=bold ctermfg=227
-"hi Function ctermfg=86
-hi Delimiter ctermfg=254
-hi Normal ctermbg=NONE
-
-
-map <leader>tt :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\.pyc', '\.git', '\.svn', '\.o']
-
-
-nnoremap <silent> <F9> :TagbarToggle<CR>
-
-
-let g:ctrlp_map = '<leader>p'
-let g:ctrlp_cmd = 'CtrlP'
-map <leader>f: CtrlPMRU<CR>
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v[\/]\.(git|hg|svn|rvm)$',
-    \ 'file': '\v\.(exe|so|dll|pyc|zip|tar|tar.gz)$',
-    \ }
-let g:ctrlp_max_height = 15
-let g:ctrlp_follow_symlinks = 1
-
-
-let g:airline_theme = 'bubblegum'
-"let g:airline_section_c = '%{getcwd()}/%t'
-let g:airline_section_c = airline#section#create(['%<', '%{getcwd()}', '/', 'file', ' ', 'readonly'])
-let g:airline_section_z = '%l/%L:%c'
-" 设置宽度大于多少时才显示某section
-let g:airline#extensions#default#section_truncate_width = {
-    \ 'a': 50,
-    \ 'b': 60,
-    \ 'gutter': 80,
-    \ 'x': 80,
-    \ 'y': 70,
-    \ 'warning': 80,
-    \ }
-
-
-let vimrplugin_assign = 0
-
-
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['pyflakes']
-
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_cpp_remove_include_errors = 1
-"let g:syntastic_cpp_auto_refresh_includes = 1
-
-
-set statusline+=%{fugitive#statusline()}
-
-"===============================
-" end of plugin config
-"===============================
 
 "===============================
 " => General
@@ -206,3 +139,76 @@ nnoremap <leader>4 4gt<CR>
 nnoremap <leader>5 5gt<CR>
 
 nnoremap <leader>mr :vertical resize +15<CR>
+
+set termguicolors
+set laststatus=2
+let g:molokai_original = 1
+let g:rehash256 = 1
+colorscheme molokai
+hi Normal ctermfg=254
+hi Visual term=reverse ctermfg=232 ctermbg=220
+hi Comment term=bold ctermfg=247
+hi LineNr ctermfg=250 ctermbg=236
+"hi PreProc term=bold ctermfg=227
+"hi Function ctermfg=86
+hi Delimiter ctermfg=254
+hi Normal ctermbg=NONE
+
+"===============================
+" begin of plugin config
+"===============================
+
+map <leader>tt :NERDTreeToggle<CR>
+let NERDTreeIgnore=['\.pyc', '\.git', '\.svn', '\.o']
+
+
+nnoremap <silent> <F9> :TagbarToggle<CR>
+
+
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlP'
+map <leader>f: CtrlPMRU<CR>
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v[\/]\.(git|hg|svn|rvm)$',
+    \ 'file': '\v\.(exe|so|dll|pyc|zip|tar|tar.gz)$',
+    \ }
+let g:ctrlp_max_height = 15
+let g:ctrlp_follow_symlinks = 1
+
+
+let g:airline_theme = 'bubblegum'
+let g:airline_powerline_fonts = 1
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline_section_c = '%{getcwd()}/%t'
+let g:airline_section_c = airline#section#create(['%<', '%{getcwd()}', '/', 'file', ' ', 'readonly'])
+let g:airline_section_z = '%l/%L:%c'
+" 设置宽度大于多少时才显示某section
+let g:airline#extensions#default#section_truncate_width = {
+    \ 'a': 50,
+    \ 'b': 60,
+    \ 'gutter': 80,
+    \ 'x': 80,
+    \ 'y': 70,
+    \ 'warning': 80,
+    \ }
+
+
+let vimrplugin_assign = 0
+
+
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['pyflakes']
+
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_remove_include_errors = 1
+"let g:syntastic_cpp_auto_refresh_includes = 1
+
+
+set statusline+=%{fugitive#statusline()}
+
+"===============================
+" end of plugin config
+"===============================
