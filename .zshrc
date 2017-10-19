@@ -83,6 +83,7 @@ source $ZSH/oh-my-zsh.sh
 alias tmux="tmux -2"
 alias gbr="git br -v"
 unalias gm
+alias vi="nvim"
 
 PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[green]%}%n@%m %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
 
