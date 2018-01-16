@@ -67,6 +67,7 @@ let mapleader = ","
 let g:mapleader = ","
 
 "set cursorline  " 突出显示当前行
+set guicursor=
 
 " Set 7 lines to the cursor - when moving vertically
 set scrolloff=7
