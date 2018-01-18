@@ -146,14 +146,15 @@ set laststatus=2
 let g:molokai_original = 1
 let g:rehash256 = 1
 colorscheme molokai
-hi Normal ctermfg=254
-hi Visual term=reverse ctermfg=232 ctermbg=220
-hi Comment term=bold ctermfg=247
+"hi Normal guifg=#e4e4e4
+hi Visual cterm=reverse ctermfg=232 ctermbg=220
+hi Visual guifg=#080808 guibg=#ffd700
+hi Comment guifg=#949494 gui=italic
 hi LineNr ctermfg=250 ctermbg=236
 "hi PreProc term=bold ctermfg=227
 "hi Function ctermfg=86
 hi Delimiter ctermfg=254
-hi Normal ctermbg=NONE
+hi Delimiter guifg=#e4e4e4
 
 "===============================
 " begin of plugin config
