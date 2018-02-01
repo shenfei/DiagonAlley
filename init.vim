@@ -26,7 +26,7 @@ Plug 'https://github.com/jalvesaq/R-Vim-runtime.git'
 Plug 'jalvesaq/Nvim-R'
 Plug 'gerw/vim-latex-suite'
 " 代码检查
-Plug 'scrooloose/syntastic'
+Plug 'vim-syntastic/syntastic'
 Plug 'hdima/python-syntax'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'godlygeek/tabular'
@@ -201,7 +201,7 @@ let vimrplugin_assign = 0
 
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['pyflakes']
+let g:syntastic_python_checkers = ['flake8']
 
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_cpp_check_header = 1
