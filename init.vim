@@ -108,6 +108,7 @@ set smarttab
 set shiftwidth=4
 au FileType cpp,c,hpp,h,R,Rmd,r,rmd setl shiftwidth=2
 au FileType html,htm,css setl shiftwidth=2
+au FileType yaml,yml setl shiftwidth=2
 set autoindent  " 换行时自动缩进
 set smartindent
 set cindent
@@ -163,6 +164,7 @@ hi Delimiter guifg=#e4e4e4
 map <leader>tt :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc', '\.git', '\.svn', '\.o']
 
+let g:NERDDefaultAlign = 'left'
 
 nnoremap <silent> <F9> :TagbarToggle<CR>
 
