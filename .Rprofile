@@ -7,6 +7,5 @@
 #
 .First <- function() {
     .libPaths('~/R/library')
-    library(colorout)
-    setOutputColors256(verbose=FALSE)
+    options(blogdown.ext = ".Rmd")
 }
