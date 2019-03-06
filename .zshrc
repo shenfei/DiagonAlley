@@ -51,7 +51,6 @@ plugins=(git autojump colored-man-pages tmux)
 
 export PATH=$HOME/bin:$PATH:/Library/Tex/texbin
 # export MANPATH="/usr/local/man:$MANPATH"
-export HOMEBREW_UPGRADE_CLEANUP=1
 
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
@@ -85,7 +84,6 @@ alias tmux="tmux -2"
 alias gbr="git br -v"
 unalias gm
 alias vi="nvim"
-alias bu='brew upgrade --ignore-pinned --cleanup'
 
 PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[green]%}%n@%m %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
 
