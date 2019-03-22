@@ -82,8 +82,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias tmux="tmux -2"
 alias gbr="git br -v"
+alias gsync="git fetch upstream && git merge upstream/master && git push origin master"
 unalias gm
 alias vi="nvim"
+alias sysupdate="sudo apt-get update; sudo apt-get upgrade"
 
 PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[green]%}%n@%m %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
 
