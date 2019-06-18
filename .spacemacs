@@ -54,11 +54,9 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(cnfonts
-                                      ;;doom-themes
-                                      all-the-icons
+   dotspacemacs-additional-packages '(all-the-icons
+                                      cnfonts
                                       gruvbox-theme
-                                      ;;color-theme-solarized
                                       org-mobile-sync
                                       )
    ;; A list of packages that cannot be updated.
@@ -91,7 +89,7 @@ values."
    ;; (default t)
    dotspacemacs-elpa-https t
    ;; Maximum allowed time in seconds to contact an ELPA repository.
-   dotspacemacs-elpa-timeout 5
+   dotspacemacs-elpa-timeout 30
    ;; If non nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
@@ -307,6 +305,11 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  ;;(setq configuration-layer--elpa-archives
+  ;;  '(("popkit" . "elpa.popkit.org/packages/")
+  ;;    ("org"   . "orgmode.org/elpa/")
+  ;;    ("gnu"   . "elpa.gnu.org/packages/")))
+
   (setq configuration-layer--elpa-archives
     '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
       ("org-cn"   . "http://elpa.emacs-china.org/org/")
@@ -338,10 +341,10 @@ you should place your code here."
     (set-fontset-font
      (frame-parameter nil 'font)
      charset
-     (font-spec :name "-*-Source Han Sans SC-normal-normal-normal-*-*-*-*-*-p-0-iso10646-1"
+     (font-spec :name "-*-Source Han Sans SC-ultrabold-italic-normal-*-*-*-*-*-p-0-iso10646-1"
                 :weight 'normal
                 :slant 'normal
-                :size 16.5)))
+                :size 16.0)))
   (cnfonts-set-spacemacs-fallback-fonts)
 
   ;;(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
@@ -365,8 +368,14 @@ you should place your code here."
   (setq org-mobile-files '("~/org"))
   (org-mobile-sync-mode 1)
 
-  (add-to-list 'org-structure-template-alist
-    '("L" "** Plan\n?\n** Note\n\n** Time\n|time|activity|\n\n** Misc\n\n"))
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+  (add-to-list 'default-frame-alist '(ns-appearance . light))
+  (when (version<= "9.2" (org-version))
+    (require 'org-tempo))
+  (tempo-define-template "work-log"
+                         '("** Plan" n p n "** Note" n n "** Time" n "|time|activity|" n n "** Misc" n n>)
+                         "<X"
+                         "Insert work log template")
 
   (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
   (setq org-format-latex-options (plist-put org-format-latex-options :justify 'center))
@@ -381,13 +390,15 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
- '(custom-enabled-themes '(spacemacs-dark))
+ '(custom-enabled-themes (quote (spacemacs-dark)))
  '(custom-safe-themes
-   '("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default))
+   (quote
+    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
  '(evil-want-Y-yank-to-eol nil)
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(org-mime evil-easymotion org-mobile-sync color-theme-solarized color-theme gruvbox-theme autothemer all-the-icons memoize doom-themes cnfonts smeargle orgit magit-gitflow gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit ghub with-editor mmm-mode markdown-toc markdown-mode gh-md org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup f dash s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy)))
+   (quote
+    (lv transient org-mime evil-easymotion org-mobile-sync color-theme-solarized color-theme gruvbox-theme autothemer all-the-icons memoize doom-themes cnfonts smeargle orgit magit-gitflow gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit ghub with-editor mmm-mode markdown-toc markdown-mode gh-md org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup f dash s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
