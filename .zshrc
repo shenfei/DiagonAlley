@@ -49,12 +49,13 @@ plugins=(git autojump colored-man-pages tmux)
 
 # User configuration
 
-export PATH=$HOME/bin:$PATH:/Library/Tex/texbin
+export PATH=$HOME/bin:$PATH:/Library/Tex/texbin:$HOME/go/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.nix-profile/etc/profile.d/nix.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
