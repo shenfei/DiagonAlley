@@ -34,6 +34,9 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-fugitive'
 
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 call plug#end()
 "===============================
 
@@ -163,6 +166,9 @@ hi Delimiter guifg=#e4e4e4
 " begin of plugin config
 "===============================
 
+
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 map <leader>tt :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc', '\.git', '\.svn', '\.o']
 
@@ -212,6 +218,11 @@ let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_remove_include_errors = 1
 "let g:syntastic_cpp_auto_refresh_includes = 1
 
+" snippet
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<c-j>'
+let g:UltiSnipsJumpBackwardTrigger='<c-k>'
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
 
 set statusline+=%{fugitive#statusline()}
 
