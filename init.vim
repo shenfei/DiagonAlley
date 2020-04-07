@@ -170,7 +170,7 @@ hi Delimiter guifg=#e4e4e4
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 map <leader>tt :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\.pyc', '\.git', '\.svn', '\.o']
+let NERDTreeIgnore=['\.pyc', '\.git', '\.svn', '\.o$']
 
 let g:NERDDefaultAlign = 'left'
 
