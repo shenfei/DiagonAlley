@@ -11,12 +11,10 @@
 
 ;; Add Packages
 (defvar my/packages '(
-  ;; --- Better Editor ---
-  ;; --- Major Mode ---
-  ;; --- Minor Mode ---
-  ;; --- Themes ---
   solarized-theme
   gruvbox-theme
+  neotree
+  projectile
   ) "Default packages")
 
 (setq package-selected-packages my/packages)
@@ -58,12 +56,16 @@
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
 
+;;neotree
+(global-set-key (kbd "<f8>") 'neotree-toggle)
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+
 ;; 快速打开配置文件
-(defun open-init-file()
+(defun init-file()
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 
-(global-set-key (kbd "<f2>") 'open-init-file)
+(global-set-key (kbd "<f2>") 'init-file)
 
 (setq make-backup-files nil)
 
