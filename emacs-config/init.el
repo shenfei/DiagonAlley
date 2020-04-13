@@ -1,17 +1,18 @@
 (require 'package)
 (setq package-archives '())
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
+;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives '("melpa" . "https://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (package-initialize)
-(package-refresh-contents)
+;;(package-refresh-contents)
 
 ;; cl - Common Lisp Extension
 (require 'cl)
 
 ;; Add Packages
 (defvar my/packages '(
-  solarized-theme
+  ;;solarized-theme
   gruvbox-theme
   neotree
   projectile
@@ -59,6 +60,15 @@
 ;;neotree
 (global-set-key (kbd "<f8>") 'neotree-toggle)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
+(evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
+(evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
+(evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
+(evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
 
 ;; 快速打开配置文件
 (defun init-file()
@@ -103,6 +113,15 @@
 (setq moody-mode-line-height 24)
 (moody-replace-mode-line-buffer-identification)
 (moody-replace-vc-mode)
+
+;; avy
+(when (not (require 'avy nil :noerror))
+  (progn
+    (message "install avy now...")
+    (setq url-http-attempt-keepalives nil)
+    (package-refresh-contents)
+    (package-install 'avy)))
+(global-set-key (kbd "M-s") 'avy-goto-char)
 
 ;;最大化 Emacs 窗口
 (toggle-frame-maximized)
