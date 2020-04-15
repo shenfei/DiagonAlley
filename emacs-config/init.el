@@ -5,17 +5,23 @@
 (add-to-list 'package-archives '("melpa" . "https://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (package-initialize)
-;;(package-refresh-contents)
 
 ;; cl - Common Lisp Extension
 (require 'cl)
 
 ;; Add Packages
 (defvar my/packages '(
-  ;;solarized-theme
-  gruvbox-theme
+  evil
+  solarized-theme
+  ;;spacemacs-theme
+  ;;gruvbox-theme
+  avy
+  moody
   neotree
   projectile
+  ess
+  poly-R
+  cnfonts
   ) "Default packages")
 
 (setq package-selected-packages my/packages)
@@ -32,16 +38,17 @@
     (when (not (package-installed-p pkg))
       (package-install pkg))))
 
-;; Download Evil
-(unless (package-installed-p 'evil)
-  (package-install 'evil))
-
 ;; Enable Evil
 (require 'evil)
 (evil-mode 1)
 
+;; Enable poly-R for Rmd
+(require 'poly-R)
+(require 'poly-markdown)
+(add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+R-mode))
+
 ;;加载主题
-(load-theme 'gruvbox-light-medium t)
+(load-theme 'solarized-light t)
 
 (setq scroll-conservatively 101)        ;光标移出时平滑滚动而不是重定位到中央
 (setq mouse-wheel-scroll-amount '(1))   ;用鼠标滚动时一次只滚动一行
@@ -51,6 +58,9 @@
 
 ;;在标题栏显示 buffer 名字
 (setq frame-title-format "[%b]")
+
+;;忽略报错声
+(setq ring-bell-function 'ignore)
 
 ;;关闭 UI 上不需要的元素：工具栏、菜单栏、滚动条
 (tool-bar-mode 0)
@@ -86,9 +96,25 @@
 (line-number-mode 1)
 (column-number-mode 1)
 
-;; 更改显示字体大小 16pt
+;; 设置字体
 ;; http://stackoverflow.com/questions/294664/how-to-set-the-font-size-in-emacs
-(set-face-attribute 'default nil :height 160)
+;;(set-face-attribute 'default nil :height 160)
+;;https://manateelazycat.github.io/emacs/2020/04/02/org-font.html
+(let ((emacs-font-size 15)
+      (emacs-font-name "WenQuanYi Micro Hei Mono"))
+  (set-frame-font (format "%s-%s" (eval emacs-font-name) (eval emacs-font-size)))
+  (set-fontset-font (frame-parameter nil 'font) 'unicode (eval emacs-font-name)))
+
+(with-eval-after-load 'org
+  (defun org-buffer-face-mode-variable ()
+    (interactive)
+    (make-face 'width-font-face)
+    (set-face-attribute 'width-font-face nil :font "Sarasa Mono SC 16")
+    (setq buffer-face-mode-face 'width-font-face)
+    (buffer-face-mode))
+
+  (add-hook 'org-mode-hook 'org-buffer-face-mode-variable))
+
 
 ;;让光标不闪烁，同时使用细长的光标而不是一个大方块
 (blink-cursor-mode 0)
@@ -96,14 +122,6 @@
 
 ;;开启当前行高亮，设置高亮行底色为灰色
 (global-hl-line-mode 1)
-
-;;安装 moody 这个 modline 工具（如果没安装的话）
-(when (not (require 'moody nil :noerror))
-  (progn
-    (message "install moody now...")
-    (setq url-http-attempt-keepalives nil)
-    (package-refresh-contents)
-    (package-install 'moody)))
 
 ;;打开版本控制检测
 (setq vc-handled-backends '(Git SVN))
@@ -115,13 +133,7 @@
 (moody-replace-vc-mode)
 
 ;; avy
-(when (not (require 'avy nil :noerror))
-  (progn
-    (message "install avy now...")
-    (setq url-http-attempt-keepalives nil)
-    (package-refresh-contents)
-    (package-install 'avy)))
-(global-set-key (kbd "M-s") 'avy-goto-char)
+(global-set-key (kbd "M-s") 'avy-goto-word-0)
 
 ;;最大化 Emacs 窗口
 (toggle-frame-maximized)
@@ -132,6 +144,12 @@
 ;;自动折行
 (setq truncate-lines nil)
 
+;;projectile
+(require 'projectile)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(projectile-mode +1)
+(setq projectile-project-search-path '("~/projects/" "~/work/" "~/pensieve/"))
 
 ;;Org Mode 设置
 
@@ -146,3 +164,6 @@
 
 ;;对代码块求值时，不经过再次确认，很烦的
 (setq org-confirm-babel-evaluate nil)
+
+;;不要在 header 处 o/O 时引入 indent
+(setq org-adapt-indentation nil)
