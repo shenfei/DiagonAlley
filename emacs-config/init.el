@@ -12,6 +12,7 @@
 ;; Add Packages
 (defvar my/packages '(
   evil
+  evil-org
   solarized-theme
   ;;spacemacs-theme
   ;;gruvbox-theme
@@ -21,7 +22,8 @@
   projectile
   ess
   poly-R
-  cnfonts
+  yasnippet
+  org-bullets
   ) "Default packages")
 
 (setq package-selected-packages my/packages)
@@ -151,6 +153,11 @@
 (projectile-mode +1)
 (setq projectile-project-search-path '("~/projects/" "~/work/" "~/pensieve/"))
 
+;; yasnippet
+(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+(require 'yasnippet)
+(yas-global-mode 1)
+
 ;;Org Mode 设置
 
 ;;让代码块中的内容不会有额外的缩进
@@ -167,3 +174,25 @@
 
 ;;不要在 header 处 o/O 时引入 indent
 (setq org-adapt-indentation nil)
+
+;;checkbox face
+;;https://jft.home.blog/2019/07/17/use-unicode-symbol-to-display-org-mode-checkboxes/
+(defface org-checkbox-done-text
+  '((t (:foreground "#71696A" :strike-through t)))
+  "Face for the text part of a checked org-mode checkbox.")
+
+(font-lock-add-keywords
+ 'org-mode
+ `(("^[ \t]*\\(?:[-+*]\\|[0-9]+[).]\\)[ \t]+\\(\\(?:\\[@\\(?:start:\\)?[0-9]+\\][ \t]*\\)?\\[\\(?:X\\|\\([0-9]+\\)/\\2\\)\\][^\n]*\n\\)"
+    1 'org-checkbox-done-text prepend))
+ 'append)
+
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+;; evil org
+(require 'evil-org)
+(add-hook 'org-mode-hook 'evil-org-mode)
+(evil-org-set-key-theme '(navigation insert textobjects additional calendar))
+(require 'evil-org-agenda)
+(evil-org-agenda-set-keys)
