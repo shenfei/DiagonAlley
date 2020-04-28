@@ -24,6 +24,7 @@
   poly-R
   yasnippet
   org-bullets
+  exec-path-from-shell
   ) "Default packages")
 
 (setq package-selected-packages my/packages)
@@ -102,7 +103,7 @@
 ;; http://stackoverflow.com/questions/294664/how-to-set-the-font-size-in-emacs
 ;;(set-face-attribute 'default nil :height 160)
 ;;https://manateelazycat.github.io/emacs/2020/04/02/org-font.html
-(let ((emacs-font-size 15)
+(let ((emacs-font-size 16)
       (emacs-font-name "WenQuanYi Micro Hei Mono"))
   (set-frame-font (format "%s-%s" (eval emacs-font-name) (eval emacs-font-size)))
   (set-fontset-font (frame-parameter nil 'font) 'unicode (eval emacs-font-name)))
@@ -151,12 +152,17 @@
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 (projectile-mode +1)
-(setq projectile-project-search-path '("~/projects/" "~/work/" "~/pensieve/"))
+(setq projectile-project-search-path '("~/projects/blogs" "~/work" "~/pensieve" "~/projects"))
 
 ;; yasnippet
 (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
 (require 'yasnippet)
 (yas-global-mode 1)
+
+
+;;exec-path-from-shell
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
 
 ;;Org Mode 设置
 
