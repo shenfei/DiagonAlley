@@ -1,8 +1,8 @@
 (require 'package)
 (setq package-archives '())
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
-;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '("melpa" . "https://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (package-initialize)
 
@@ -25,6 +25,7 @@
   yasnippet
   org-bullets
   exec-path-from-shell
+  restclient
   ) "Default packages")
 
 (setq package-selected-packages my/packages)
@@ -159,10 +160,11 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
-
 ;;exec-path-from-shell
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
+
+(require 'restclient)
 
 ;;Org Mode 设置
 
