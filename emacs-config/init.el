@@ -105,7 +105,7 @@
 ;;(set-face-attribute 'default nil :height 160)
 ;;https://manateelazycat.github.io/emacs/2020/04/02/org-font.html
 (let ((emacs-font-size 16)
-      (emacs-font-name "WenQuanYi Micro Hei Mono"))
+      (emacs-font-name "Fira Code"))
   (set-frame-font (format "%s-%s" (eval emacs-font-name) (eval emacs-font-size)))
   (set-fontset-font (frame-parameter nil 'font) 'unicode (eval emacs-font-name)))
 
