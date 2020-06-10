@@ -93,6 +93,15 @@
 
 (setq make-backup-files nil)
 
+;; Unicode
+;; 设置弯引号与 macOS 输入法一致
+(global-unset-key (kbd "M-{"))
+(global-unset-key (kbd "M-}"))
+(define-key key-translation-map (kbd "M-[") (kbd "“"))
+(define-key key-translation-map (kbd "M-{") (kbd "”"))
+(define-key key-translation-map (kbd "M-]") (kbd "‘"))
+(define-key key-translation-map (kbd "M-}") (kbd "’"))
+
 ;;关闭文件左侧的行号显示，避免大文件的时候卡顿
 (global-linum-mode 0)
 
