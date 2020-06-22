@@ -18,6 +18,7 @@
   ;;gruvbox-theme
   avy
   moody
+  all-the-icons
   neotree
   projectile
   ess
@@ -51,6 +52,32 @@
 (require 'poly-markdown)
 (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+R-mode))
 
+;; meta/super mapping
+;; default to exteranl keyboard use assume the alt/win keys have been swapped in system keyboard setting
+(setq mac-command-modifier 'meta
+      mac-option-modifier 'super
+      mac-right-command-modifier 'super
+      mac-right-option-modifier 'meta)
+
+(defun swap-meta-and-super ()
+  "Set left and right cmd/opt keys to different mappings.
+Swap the binding when you change between mac internal keyboard to external keyboard."
+  (interactive)
+  (if (eq mac-command-modifier 'meta)
+      (progn
+        (setq mac-command-modifier 'super)
+        (setq mac-option-modifier 'meta)
+        (setq mac-right-command-modifier 'meta)
+        (setq mac-right-option-modifier 'super)
+        (message "Switch to internal keyboard. Left: Opt->M Cmd->s Right: Cmd->M Opt->s"))
+    (progn
+      (setq mac-command-modifier 'meta)
+      (setq mac-option-modifier 'super)
+      (setq mac-right-command-modifier 'super)
+      (setq mac-right-option-modifier 'meta)
+      (message "Switch to external keyboard. Left: Win/Opt->M Alt/Cmd->s Right: Alt/Cmd->M Win/Opt->s"))))
+
+(global-set-key (kbd "C-c w") 'swap-meta-and-super)
 ;;加载主题
 (load-theme 'solarized-light t)
 
