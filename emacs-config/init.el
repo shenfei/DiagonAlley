@@ -59,7 +59,7 @@
       mac-right-command-modifier 'super
       mac-right-option-modifier 'meta)
 
-(defun swap-meta-and-super ()
+(defun shen/swap-meta-and-super ()
   "Set left and right cmd/opt keys to different mappings.
 Swap the binding when you change between mac internal keyboard to external keyboard."
   (interactive)
@@ -77,7 +77,8 @@ Swap the binding when you change between mac internal keyboard to external keybo
       (setq mac-right-option-modifier 'meta)
       (message "Switch to external keyboard. Left: Win/Opt->M Alt/Cmd->s Right: Alt/Cmd->M Win/Opt->s"))))
 
-(global-set-key (kbd "C-c w") 'swap-meta-and-super)
+(global-set-key (kbd "C-c w") 'shen/swap-meta-and-super)
+
 ;;加载主题
 (load-theme 'solarized-light t)
 
