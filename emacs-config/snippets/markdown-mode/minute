@@ -1,0 +1,5 @@
+# -*- mode: markdown -*-
+# name: minute
+# key: min
+# --
+`(format-time-string "%H:%M")`

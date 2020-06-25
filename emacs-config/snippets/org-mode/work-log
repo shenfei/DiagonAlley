@@ -1,0 +1,15 @@
+# -*- mode: org -*-
+# name: work log 
+# key: wlog
+# --
+* `(format-time-string "%m/%d, %a")`
+** Plan
+
+** Note
+
+** Time
+|time|activity|
+|-
+|
+
+** Misc

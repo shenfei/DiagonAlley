@@ -1,0 +1,6 @@
+# -*- mode: markdown -*-
+# name: chunk
+# key: chk
+# --
+\`\`\`{$1}
+\`\`\`

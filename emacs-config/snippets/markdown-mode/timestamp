@@ -1,0 +1,5 @@
+# -*- mode: markdown -*-
+# name: timestamp
+# key: stamp
+# --
+`(format-time-string "%Y-%m-%d %H:%M:%S")`
