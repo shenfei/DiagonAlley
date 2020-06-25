@@ -1,0 +1,14 @@
+snippet argparse "script with argparse" b
+import argparse
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('$1')
+    args = parser.parse_args()
+endsnippet
+
+snippet main "simple main" b
+if __name__ == "__main__":
+    $1
+endsnippet
