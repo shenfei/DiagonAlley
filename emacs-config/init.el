@@ -44,8 +44,15 @@
       (package-install pkg))))
 
 ;; Enable Evil
+(setq evil-want-C-u-scroll t)
+(setq evil-want-Y-yank-to-eol t)
 (require 'evil)
 (evil-mode 1)
+
+;; Custom evil keymaps
+(evil-define-key '(normal insert) 'global (kbd "C-a") 'beginning-of-line)
+(evil-define-key '(normal insert) 'global (kbd "C-e") 'end-of-line)
+(evil-define-key 'normal 'global (kbd ", s") 'save-buffer)
 
 ;; Enable poly-R for Rmd
 (require 'poly-R)
