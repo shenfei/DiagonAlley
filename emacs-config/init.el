@@ -19,7 +19,6 @@
   avy
   moody
   all-the-icons
-  neotree
   projectile
   ess
   poly-R
@@ -107,8 +106,26 @@ Swap the binding when you change between mac internal keyboard to external keybo
 (scroll-bar-mode 0)
 
 ;;neotree
-(global-set-key (kbd "<f8>") 'neotree-toggle)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+(setq neo-smart-open t)
+(setq projectile-switch-project-action 'neotree-projectile-action)
+(require 'neotree)
+
+(defun neotree-project-dir ()
+  "Open NeoTree using the git root."
+  (interactive)
+  (let ((project-dir (projectile-project-root))
+	(file-name (buffer-file-name)))
+    (neotree-toggle)
+    (if project-dir
+	(if (neo-global--window-exists-p)
+	    (progn
+	      (neotree-dir project-dir)
+	      (neotree-find file-name)))
+      (message "Could not find git project root."))))
+
+(global-set-key (kbd "<f8>") 'neotree-project-dir)
+
 (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
 (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
 (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
