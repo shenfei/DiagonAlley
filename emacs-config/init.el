@@ -43,7 +43,6 @@
       (package-install pkg))))
 
 ;; Enable Evil
-(setq evil-want-C-u-scroll t)
 (setq evil-want-Y-yank-to-eol t)
 (require 'evil)
 (evil-mode 1)
@@ -51,6 +50,7 @@
 ;; Custom evil keymaps
 (evil-define-key '(normal insert) 'global (kbd "C-a") 'beginning-of-line)
 (evil-define-key '(normal insert) 'global (kbd "C-e") 'end-of-line)
+(evil-define-key 'normal 'global (kbd "C-u C-u") 'evil-scroll-up)
 (evil-define-key 'normal 'global (kbd ", s") 'save-buffer)
 
 ;; Enable poly-R for Rmd
@@ -243,6 +243,9 @@ Swap the binding when you change between mac internal keyboard to external keybo
 
 ;;不要在 header 处 o/O 时引入 indent
 (setq org-adapt-indentation nil)
+
+;; M-RET will go to the end of the line before making a new line
+(setq org-M-RET-may-split-line nil)
 
 ;;checkbox face
 ;;https://jft.home.blog/2019/07/17/use-unicode-symbol-to-display-org-mode-checkboxes/
