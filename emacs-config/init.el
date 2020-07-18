@@ -247,6 +247,16 @@ Swap the binding when you change between mac internal keyboard to external keybo
 ;; M-RET will go to the end of the line before making a new line
 (setq org-M-RET-may-split-line nil)
 
+;; Org mode settings for work log
+(setq org-agenda-files (list (format-time-string "~/pensieve/work_log/%Y/%Y-%m.org"))) ;; 只将当月 work log 纳入 agenda
+(setq org-tag-alist '(("job") ("hack") ("study")))
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "BLOCK(b)" "|" "STAGE(s)" "DONE(d)")))
+
+(global-set-key (kbd "C-c a") 'org-agenda)
+(evil-define-key '(normal insert) 'global (kbd "C-c i") 'org-clock-in)
+(evil-define-key '(normal insert) 'global (kbd "C-c o") 'org-clock-out)
+
 ;;checkbox face
 ;;https://jft.home.blog/2019/07/17/use-unicode-symbol-to-display-org-mode-checkboxes/
 (defface org-checkbox-done-text
