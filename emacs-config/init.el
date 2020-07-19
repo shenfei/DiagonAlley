@@ -12,6 +12,7 @@
 ;; Add Packages
 (defvar my/packages '(
   evil
+  org
   evil-org
   solarized-theme
   ;;spacemacs-theme
@@ -249,6 +250,7 @@ Swap the binding when you change between mac internal keyboard to external keybo
 
 ;; Org mode settings for work log
 (setq org-agenda-files (list (format-time-string "~/pensieve/work_log/%Y/%Y-%m.org"))) ;; 只将当月 work log 纳入 agenda
+(setq org-clock-into-drawer nil)
 (setq org-tag-alist '(("job") ("hack") ("study")))
 (setq org-todo-keywords
       '((sequence "TODO(t)" "BLOCK(b)" "|" "STAGE(s)" "DONE(d)")))
@@ -269,6 +271,7 @@ Swap the binding when you change between mac internal keyboard to external keybo
     1 'org-checkbox-done-text prepend))
  'append)
 
+(require 'org-tempo)
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
