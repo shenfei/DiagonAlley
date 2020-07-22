@@ -251,6 +251,7 @@ Swap the binding when you change between mac internal keyboard to external keybo
 ;; Org mode settings for work log
 (setq org-agenda-files (list (format-time-string "~/pensieve/work_log/%Y/%Y-%m.org"))) ;; 只将当月 work log 纳入 agenda
 (setq org-clock-into-drawer nil)
+(setq org-clock-clocktable-default-properties '(:maxlevel 4 :scope tree))
 (setq org-tag-alist '(("job") ("hack") ("study")))
 (setq org-todo-keywords
       '((sequence "TODO(t)" "BLOCK(b)" "|" "STAGE(s)" "DONE(d)")))
