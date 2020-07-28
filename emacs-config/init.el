@@ -17,9 +17,9 @@
   solarized-theme
   ;;spacemacs-theme
   ;;gruvbox-theme
+  ;;acme-theme
   avy
   moody
-  all-the-icons
   projectile
   ess
   poly-R
@@ -116,13 +116,13 @@ Swap the binding when you change between mac internal keyboard to external keybo
   "Open NeoTree using the git root."
   (interactive)
   (let ((project-dir (projectile-project-root))
-	(file-name (buffer-file-name)))
+        (file-name (buffer-file-name)))
     (neotree-toggle)
     (if project-dir
-	(if (neo-global--window-exists-p)
-	    (progn
-	      (neotree-dir project-dir)
-	      (neotree-find file-name)))
+        (if (neo-global--window-exists-p)
+            (progn
+                (neotree-dir project-dir)
+                (neotree-find file-name)))
       (message "Could not find git project root."))))
 
 (global-set-key (kbd "<f8>") 'neotree-project-dir)
@@ -136,6 +136,13 @@ Swap the binding when you change between mac internal keyboard to external keybo
 (evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
 (evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
 (evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
+
+;; all-the-icons
+(require 'all-the-icons)
+(add-to-list 'all-the-icons-icon-alist
+             '("\\.[Rr]md$" all-the-icons-fileicon "R" :face all-the-icons-lblue))
+(add-to-list 'all-the-icons-icon-alist
+             '("\\.[Rr]proj$" all-the-icons-fileicon "R" :face all-the-icons-lblue))
 
 ;; 快速打开配置文件
 (defun init-file()
@@ -166,7 +173,7 @@ Swap the binding when you change between mac internal keyboard to external keybo
 ;; http://stackoverflow.com/questions/294664/how-to-set-the-font-size-in-emacs
 ;;(set-face-attribute 'default nil :height 160)
 ;;https://manateelazycat.github.io/emacs/2020/04/02/org-font.html
-(let ((emacs-font-size 16)
+(let ((emacs-font-size 17)
       (emacs-font-name "Fira Code"))
   (set-frame-font (format "%s-%s" (eval emacs-font-name) (eval emacs-font-size)))
   (set-fontset-font (frame-parameter nil 'font) 'unicode (eval emacs-font-name)))
@@ -252,6 +259,8 @@ Swap the binding when you change between mac internal keyboard to external keybo
 (setq org-agenda-files (list (format-time-string "~/pensieve/work_log/%Y/%Y-%m.org"))) ;; 只将当月 work log 纳入 agenda
 (setq org-clock-into-drawer nil)
 (setq org-clock-clocktable-default-properties '(:maxlevel 4 :scope tree))
+(global-set-key (kbd "C-c r") 'org-clock-report)
+
 (setq org-tag-alist '(("job") ("hack") ("study")))
 (setq org-todo-keywords
       '((sequence "TODO(t)" "BLOCK(b)" "|" "STAGE(s)" "DONE(d)")))
