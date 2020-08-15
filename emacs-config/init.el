@@ -6,6 +6,8 @@
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (package-initialize)
 
+(eval-when-compile (require 'use-package))
+
 ;; cl - Common Lisp Extension
 (require 'cl)
 
