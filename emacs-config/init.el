@@ -8,88 +8,8 @@
 
 (eval-when-compile (require 'use-package))
 
-;; cl - Common Lisp Extension
-(require 'cl)
 
-;; Add Packages
-(defvar my/packages '(
-  evil
-  org
-  evil-org
-  solarized-theme
-  ;;spacemacs-theme
-  ;;gruvbox-theme
-  ;;acme-theme
-  avy
-  moody
-  projectile
-  ess
-  poly-R
-  yasnippet
-  org-bullets
-  exec-path-from-shell
-  restclient
-  ) "Default packages")
-
-(setq package-selected-packages my/packages)
-
-(defun my/packages-installed-p ()
-  (loop for pkg in my/packages
-        when (not (package-installed-p pkg)) do (return nil)
-        finally (return t)))
-
-(unless (my/packages-installed-p)
-  (message "%s" "Refreshing package database...")
-  (package-refresh-contents)
-  (dolist (pkg my/packages)
-    (when (not (package-installed-p pkg))
-      (package-install pkg))))
-
-;; Enable Evil
-(setq evil-want-Y-yank-to-eol t)
-(require 'evil)
-(evil-mode 1)
-
-;; Custom evil keymaps
-(evil-define-key '(normal insert) 'global (kbd "C-a") 'beginning-of-line)
-(evil-define-key '(normal insert) 'global (kbd "C-e") 'end-of-line)
-(evil-define-key 'normal 'global (kbd "C-u C-u") 'evil-scroll-up)
-(evil-define-key 'normal 'global (kbd ", s") 'save-buffer)
-
-;; Enable poly-R for Rmd
-(require 'poly-R)
-(require 'poly-markdown)
-(add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+R-mode))
-
-;; meta/super mapping
-;; default to exteranl keyboard use assume the alt/win keys have been swapped in system keyboard setting
-(setq mac-command-modifier 'meta
-      mac-option-modifier 'super
-      mac-right-command-modifier 'super
-      mac-right-option-modifier 'meta)
-
-(defun shen/swap-meta-and-super ()
-  "Set left and right cmd/opt keys to different mappings.
-Swap the binding when you change between mac internal keyboard to external keyboard."
-  (interactive)
-  (if (eq mac-command-modifier 'meta)
-      (progn
-        (setq mac-command-modifier 'super)
-        (setq mac-option-modifier 'meta)
-        (setq mac-right-command-modifier 'meta)
-        (setq mac-right-option-modifier 'super)
-        (message "Switch to internal keyboard. Left: Opt->M Cmd->s Right: Cmd->M Opt->s"))
-    (progn
-      (setq mac-command-modifier 'meta)
-      (setq mac-option-modifier 'super)
-      (setq mac-right-command-modifier 'super)
-      (setq mac-right-option-modifier 'meta)
-      (message "Switch to external keyboard. Left: Win/Opt->M Alt/Cmd->s Right: Alt/Cmd->M Win/Opt->s"))))
-
-(global-set-key (kbd "C-c w") 'shen/swap-meta-and-super)
-
-;;加载主题
-(load-theme 'solarized-light t)
+;;; Basic Settings
 
 (setq scroll-conservatively 101)        ;光标移出时平滑滚动而不是重定位到中央
 (setq mouse-wheel-scroll-amount '(1))   ;用鼠标滚动时一次只滚动一行
@@ -108,61 +28,27 @@ Swap the binding when you change between mac internal keyboard to external keybo
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
 
-;;neotree
-(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
-(setq neo-smart-open t)
-(setq projectile-switch-project-action 'neotree-projectile-action)
-(require 'neotree)
-
-(defun neotree-project-dir ()
-  "Open NeoTree using the git root."
-  (interactive)
-  (let ((project-dir (projectile-project-root))
-        (file-name (buffer-file-name)))
-    (neotree-toggle)
-    (if project-dir
-        (if (neo-global--window-exists-p)
-            (progn
-                (neotree-dir project-dir)
-                (neotree-find file-name)))
-      (message "Could not find git project root."))))
-
-(global-set-key (kbd "<f8>") 'neotree-project-dir)
-
-(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
-(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
-(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
-(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
-(evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
-(evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
-(evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
-(evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
-(evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
-
-;; all-the-icons
-(require 'all-the-icons)
-(add-to-list 'all-the-icons-icon-alist
-             '("\\.[Rr]md$" all-the-icons-fileicon "R" :face all-the-icons-lblue))
-(add-to-list 'all-the-icons-icon-alist
-             '("\\.[Rr]proj$" all-the-icons-fileicon "R" :face all-the-icons-lblue))
-
-;; 快速打开配置文件
-(defun init-file()
-  (interactive)
-  (find-file "~/.emacs.d/init.el"))
-
-(global-set-key (kbd "<f2>") 'init-file)
-
 (setq make-backup-files nil)
 
-;; Unicode
-;; 设置弯引号与 macOS 输入法一致
-(global-unset-key (kbd "M-{"))
-(global-unset-key (kbd "M-}"))
-(define-key key-translation-map (kbd "M-[") (kbd "“"))
-(define-key key-translation-map (kbd "M-{") (kbd "”"))
-(define-key key-translation-map (kbd "M-]") (kbd "‘"))
-(define-key key-translation-map (kbd "M-}") (kbd "’"))
+;;最大化 Emacs 窗口
+(toggle-frame-maximized)
+
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
+
+;;自动折行
+(setq truncate-lines nil)
+
+;;让光标不闪烁，同时使用细长的光标而不是一个大方块
+(blink-cursor-mode 0)
+(setq-default cursor-type 'bar)
+
+;;开启当前行高亮，设置高亮行底色为灰色
+(global-hl-line-mode 1)
+
+;;打开版本控制检测
+(setq vc-handled-backends '(Git SVN))
+
+(setq make-backup-files nil)
 
 ;;关闭文件左侧的行号显示，避免大文件的时候卡顿
 (global-linum-mode 0)
@@ -191,51 +77,120 @@ Swap the binding when you change between mac internal keyboard to external keybo
   (add-hook 'org-mode-hook 'org-buffer-face-mode-variable))
 
 
-;;让光标不闪烁，同时使用细长的光标而不是一个大方块
-(blink-cursor-mode 0)
-(setq-default cursor-type 'bar)
+;;; Packages configs
 
-;;开启当前行高亮，设置高亮行底色为灰色
-(global-hl-line-mode 1)
-
-;;打开版本控制检测
-(setq vc-handled-backends '(Git SVN))
-
-;;启用 moody
-(setq x-underline-at-descent-line t)
-(setq moody-mode-line-height 24)
-(moody-replace-mode-line-buffer-identification)
-(moody-replace-vc-mode)
-
-;; avy
-(global-set-key (kbd "M-s") 'avy-goto-word-0)
-
-;;最大化 Emacs 窗口
-(toggle-frame-maximized)
-
-;;覆盖 C-x k 这个快捷键，这个快捷键原来绑定到了 kill-buffer 这个命令上，会要求用户输入 buffer 名字选择该 kill 哪个 buffer，但其实大部分时候需要的就是 kill 当前的 buffer 而已。
-(global-set-key (kbd "C-x k") 'kill-this-buffer)
-
-;;自动折行
-(setq truncate-lines nil)
-
-;;projectile
-(require 'projectile)
-(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-(projectile-mode +1)
-(setq projectile-project-search-path '("~/projects/blogs" "~/work" "~/pensieve" "~/projects"))
+;; Theme
+(use-package solarized-theme
+  :ensure t
+  :config
+  (load-theme 'solarized-light t))
+;(use-package gruvbox-theme
+;  :ensure t
+;  :config
+;  (load-theme 'gruvbox-light-hard))
 
 ;; yasnippet
-(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-(require 'yasnippet)
-(yas-global-mode 1)
+(use-package yasnippet
+  :init
+  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+  :config
+  (yas-global-mode 1))
+
+(use-package restclient)
+
+;; all-the-icons
+(use-package all-the-icons
+  :config
+  (add-to-list 'all-the-icons-icon-alist
+	       '("\\.[Rr]md$" all-the-icons-fileicon "R" :face all-the-icons-lblue))
+  (add-to-list 'all-the-icons-icon-alist
+	       '("\\.[Rr]proj$" all-the-icons-fileicon "R" :face all-the-icons-lblue)))
+
+;; avy
+(use-package avy
+  :ensure t
+  :bind ("M-s" . avy-goto-word-0))
 
 ;;exec-path-from-shell
-(when (memq window-system '(mac ns x))
+(use-package exec-path-from-shell
+  :if (memq window-system '(mac ns x))
+  :ensure t
+  :config
   (exec-path-from-shell-initialize))
 
-(require 'restclient)
+;; moody
+(use-package moody
+  :config
+  (setq x-underline-at-descent-line t)
+  (setq moody-mode-line-height 24)
+  (moody-replace-mode-line-buffer-identification)
+  (moody-replace-vc-mode))
+
+;; Enable poly-R for Rmd
+(use-package ess :ensure t)
+(use-package poly-markdown :ensure t)
+(use-package poly-R
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode)))
+
+;;projectile
+(use-package projectile
+  :ensure t
+  :init
+  (setq projectile-project-search-path '("~/projects/blogs" "~/work" "~/pensieve" "~/projects"))
+  :config
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (projectile-mode +1))
+
+;;neotree
+(defun neotree-project-dir ()
+  "Open NeoTree using the git root."
+  (interactive)
+  (let ((project-dir (projectile-project-root))
+        (file-name (buffer-file-name)))
+    (neotree-toggle)
+    (if project-dir
+        (if (neo-global--window-exists-p)
+            (progn
+                (neotree-dir project-dir)
+                (neotree-find file-name)))
+      (message "Could not find git project root."))))
+
+(use-package neotree
+  :ensure t
+  :after projectile
+  :init
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+  (setq neo-smart-open t)
+  (setq projectile-switch-project-action 'neotree-projectile-action)
+  :bind ("<f8>" . neotree-project-dir))
+
+
+;; Evil
+(use-package evil
+  :ensure t
+  :init
+  (setq evil-want-Y-yank-to-eol t)
+  :config
+  (evil-mode 1)
+  ;; Custom evil keymaps
+  (evil-define-key '(normal insert) 'global (kbd "C-a") 'beginning-of-line)
+  (evil-define-key '(normal insert) 'global (kbd "C-e") 'end-of-line)
+  (evil-define-key 'normal 'global (kbd "C-u C-u") 'evil-scroll-up)
+  (evil-define-key 'normal 'global (kbd ", s") 'save-buffer)
+
+  (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+  (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+  (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+  (evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
+  (evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
+  (evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
+  (evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
+  (evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
+  )
 
 ;;Org Mode 设置
 
@@ -259,7 +214,7 @@ Swap the binding when you change between mac internal keyboard to external keybo
 
 ;; Org mode settings for work log
 (setq org-agenda-files (list (format-time-string "~/pensieve/work_log/%Y/%Y-%m.org"))) ;; 只将当月 work log 纳入 agenda
-(setq org-clock-into-drawer nil)
+(setq org-clock-into-drawer 2)
 (setq org-clock-clocktable-default-properties '(:maxlevel 4 :scope tree))
 (global-set-key (kbd "C-c r") 'org-clock-report)
 
@@ -283,13 +238,66 @@ Swap the binding when you change between mac internal keyboard to external keybo
     1 'org-checkbox-done-text prepend))
  'append)
 
-(require 'org-tempo)
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(use-package org-tempo)
+(use-package org-bullets
+  :after org
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 ;; evil org
-(require 'evil-org)
-(add-hook 'org-mode-hook 'evil-org-mode)
-(evil-org-set-key-theme '(navigation insert textobjects additional calendar))
-(require 'evil-org-agenda)
-(evil-org-agenda-set-keys)
+(use-package evil-org
+  :after (evil org)
+  :config
+  (add-hook 'org-mode-hook 'evil-org-mode)
+  (evil-org-set-key-theme '(navigation insert textobjects additional calendar)))
+
+(use-package evil-org-agenda
+  :after (evil org evil-org)
+  :config
+  (evil-org-agenda-set-keys))
+
+
+;;; Custom Keybindings and Functions
+
+;; 快速打开配置文件
+(defun init-file()
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+
+(global-set-key (kbd "<f2>") 'init-file)
+
+;; Unicode
+;; 设置弯引号与 macOS 输入法一致
+(global-unset-key (kbd "M-{"))
+(global-unset-key (kbd "M-}"))
+(define-key key-translation-map (kbd "M-[") (kbd "“"))
+(define-key key-translation-map (kbd "M-{") (kbd "”"))
+(define-key key-translation-map (kbd "M-]") (kbd "‘"))
+(define-key key-translation-map (kbd "M-}") (kbd "’"))
+
+;; meta/super mapping
+;; default to exteranl keyboard use assume the alt/win keys have been swapped in system keyboard setting
+(setq mac-command-modifier 'meta
+      mac-option-modifier 'super
+      mac-right-command-modifier 'super
+      mac-right-option-modifier 'meta)
+
+(defun shen/swap-meta-and-super ()
+  "Set left and right cmd/opt keys to different mappings.
+Swap the binding when you change between mac internal keyboard to external keyboard."
+  (interactive)
+  (if (eq mac-command-modifier 'meta)
+      (progn
+        (setq mac-command-modifier 'super)
+        (setq mac-option-modifier 'meta)
+        (setq mac-right-command-modifier 'meta)
+        (setq mac-right-option-modifier 'super)
+        (message "Switch to internal keyboard. Left: Opt->M Cmd->s Right: Cmd->M Opt->s"))
+    (progn
+      (setq mac-command-modifier 'meta)
+      (setq mac-option-modifier 'super)
+      (setq mac-right-command-modifier 'super)
+      (setq mac-right-option-modifier 'meta)
+      (message "Switch to external keyboard. Left: Win/Opt->M Alt/Cmd->s Right: Alt/Cmd->M Win/Opt->s"))))
+
+(global-set-key (kbd "C-c w") 'shen/swap-meta-and-super)
