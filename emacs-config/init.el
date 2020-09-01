@@ -185,6 +185,8 @@
   (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
   (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
   (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+  (evil-define-key 'normal neotree-mode-map (kbd "s") 'neotree-enter-vertical-split)
+  (evil-define-key 'normal neotree-mode-map (kbd "i") 'neotree-enter-horizontal-split)
   (evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
   (evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
   (evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
@@ -206,8 +208,8 @@
 ;;对代码块求值时，不经过再次确认，很烦的
 (setq org-confirm-babel-evaluate nil)
 
-;;不要在 header 处 o/O 时引入 indent
-(setq org-adapt-indentation nil)
+;; Trun on org-indent-mode globally
+(setq org-startup-indented t)
 
 ;; M-RET will go to the end of the line before making a new line
 (setq org-M-RET-may-split-line nil)
@@ -225,6 +227,7 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (evil-define-key '(normal insert) 'global (kbd "C-c i") 'org-clock-in)
 (evil-define-key '(normal insert) 'global (kbd "C-c o") 'org-clock-out)
+(setq org-agenda-skip-scheduled-if-done t)
 
 ;;checkbox face
 ;;https://jft.home.blog/2019/07/17/use-unicode-symbol-to-display-org-mode-checkboxes/
