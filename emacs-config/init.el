@@ -102,6 +102,8 @@
 (use-package all-the-icons
   :config
   (add-to-list 'all-the-icons-icon-alist
+	       '("\\.toml$" all-the-icons-octicon "settings" :v-adjust 0.0 :face all-the-icons-dyellow))
+  (add-to-list 'all-the-icons-icon-alist
 	       '("\\.[Rr]md$" all-the-icons-fileicon "R" :face all-the-icons-lblue))
   (add-to-list 'all-the-icons-icon-alist
 	       '("\\.[Rr]proj$" all-the-icons-fileicon "R" :face all-the-icons-lblue)))
