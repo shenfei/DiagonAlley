@@ -189,7 +189,7 @@
   (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
   (evil-define-key 'normal neotree-mode-map (kbd "s") 'neotree-enter-vertical-split)
   (evil-define-key 'normal neotree-mode-map (kbd "i") 'neotree-enter-horizontal-split)
-  (evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
+  (evil-define-key 'normal neotree-mode-map (kbd "r") 'neotree-refresh)
   (evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
   (evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
   (evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
