@@ -1,0 +1,6 @@
+# -*- mode: markdown -*-
+# name: latexenviron
+# key: tex
+# --
+\begin{$1}
+\end{$1}
