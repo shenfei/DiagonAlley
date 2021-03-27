@@ -8,4 +8,10 @@
 .First <- function() {
     .libPaths('~/R/library')
     options(blogdown.ext = ".Rmd")
+    knitr::opts_chunk$set(fig.retina = 2, # Control using dpi
+                          fig.width = 6,  # generated images
+                          fig.pos = "t",  # pdf mode
+                          fig.align = "center",
+                          dpi = if (knitr::is_latex_output()) 72 else 300,
+                          out.width = "100%")
 }
