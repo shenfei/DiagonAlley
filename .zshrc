@@ -49,7 +49,7 @@ plugins=(git autojump colored-man-pages tmux)
 
 # User configuration
 
-export PATH=$HOME/bin:$PATH:$HOME/.local/bin:/Library/Tex/texbin:$HOME/go/bin
+export PATH=$HOME/bin:$PATH:/Library/Tex/texbin:$HOME/go/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
@@ -91,25 +91,8 @@ alias sysupdate="sudo apt update; sudo apt -y upgrade"
 PROMPT="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
 PROMPT+='%{$fg[green]%}%n@%m %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
 
-# 0 . Enter
-bindkey -s "^[Op" "0"
-bindkey -s "^[On" "."
-bindkey -s "^[OM" "^M"
-# 1 2 3
-bindkey -s "^[Oq" "1"
-bindkey -s "^[Or" "2"
-bindkey -s "^[Os" "3"
-# 4 5 6
-bindkey -s "^[Ot" "4"
-bindkey -s "^[Ou" "5"
-bindkey -s "^[Ov" "6"
-# 7 8 9
-bindkey -s "^[Ow" "7"
-bindkey -s "^[Ox" "8"
-bindkey -s "^[Oy" "9"
-# + -  * /
-bindkey -s "^[Ok" "+"
-bindkey -s "^[Om" "-"
-bindkey -s "^[Oj" "*"
-bindkey -s "^[Oo" "/"
+export HUGO_ENV=dev
+export DOTNET_CLI_TELEMETRY_OPTOUT=true
 
+bindkey "^[^[[D" forward-word
+bindkey "^[^[[C" backward-word
