@@ -11,6 +11,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'tomasr/molokai'
+Plug 'morhetz/gruvbox'
 " 文件树形结构
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'majutsushi/tagbar'
@@ -149,18 +150,25 @@ nnoremap <leader>mr :vertical resize +15<CR>
 
 set termguicolors
 set laststatus=2
-let g:molokai_original = 1
-let g:rehash256 = 1
-colorscheme molokai
-"hi Normal guifg=#e4e4e4
-hi Visual cterm=reverse ctermfg=232 ctermbg=220
-hi Visual guifg=#080808 guibg=#ffd700
-hi Comment guifg=#949494 gui=italic
-hi LineNr ctermfg=250 ctermbg=236
-"hi PreProc term=bold ctermfg=227
-"hi Function ctermfg=86
-hi Delimiter ctermfg=254
-hi Delimiter guifg=#e4e4e4
+
+set background=dark
+let g:gruvbox_italic = 1
+let g:gruvbox_transparent_bg = 1
+let g:gruvbox_contrast_light = "soft"
+let g:gruvbox_invert_tabline = 1
+colorscheme gruvbox
+"let g:molokai_original = 1
+"let g:rehash256 = 1
+"colorscheme molokai
+""hi Normal guifg=#e4e4e4
+"hi Visual cterm=reverse ctermfg=232 ctermbg=220
+"hi Visual guifg=#080808 guibg=#ffd700
+"hi Comment guifg=#949494 gui=italic
+"hi LineNr ctermfg=250 ctermbg=236
+""hi PreProc term=bold ctermfg=227
+""hi Function ctermfg=86
+"hi Delimiter ctermfg=254
+"hi Delimiter guifg=#e4e4e4
 
 "===============================
 " begin of plugin config
