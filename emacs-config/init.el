@@ -102,11 +102,11 @@
 (use-package all-the-icons
   :config
   (add-to-list 'all-the-icons-icon-alist
-	       '("\\.toml$" all-the-icons-octicon "settings" :v-adjust 0.0 :face all-the-icons-dyellow))
+               '("\\.toml$" all-the-icons-octicon "settings" :v-adjust 0.0 :face all-the-icons-dyellow))
   (add-to-list 'all-the-icons-icon-alist
-	       '("\\.[Rr]md$" all-the-icons-fileicon "R" :face all-the-icons-lblue))
+               '("\\.[Rr]md$" all-the-icons-fileicon "R" :face all-the-icons-lblue))
   (add-to-list 'all-the-icons-icon-alist
-	       '("\\.[Rr]proj$" all-the-icons-fileicon "R" :face all-the-icons-lblue)))
+               '("\\.[Rr]proj$" all-the-icons-fileicon "R" :face all-the-icons-lblue)))
 
 ;; avy
 (use-package avy
@@ -212,6 +212,9 @@
 
 ;; Trun on org-indent-mode globally
 (setq org-startup-indented t)
+
+;; Override default value introduced in v9.4 (Emacs 27.2)
+(setq org-startup-folded t)
 
 ;; M-RET will go to the end of the line before making a new line
 (setq org-M-RET-may-split-line nil)
