@@ -45,6 +45,8 @@
 ;;开启当前行高亮，设置高亮行底色为灰色
 (global-hl-line-mode 1)
 
+(setq-default show-trailing-whitespace t)
+
 ;;打开版本控制检测
 (setq vc-handled-backends '(Git SVN))
 
