@@ -93,6 +93,7 @@ PROMPT+='%{$fg[green]%}%n@%m %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info
 
 export HUGO_ENV=dev
 export DOTNET_CLI_TELEMETRY_OPTOUT=true
+export HOMEBREW_NO_ANALYTICS=1
 
 bindkey "^[^[[D" forward-word
 bindkey "^[^[[C" backward-word
