@@ -8,6 +8,7 @@
 .First <- function() {
     .libPaths('~/R/library')
     options(blogdown.ext = ".Rmd")
+    options(bookdown.render.file_scope = FALSE)
     knitr::opts_chunk$set(fig.retina = 2, # Control using dpi
                           fig.width = 6,  # generated images
                           fig.pos = "t",  # pdf mode
