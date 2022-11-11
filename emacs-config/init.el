@@ -63,7 +63,7 @@
 ;; http://stackoverflow.com/questions/294664/how-to-set-the-font-size-in-emacs
 ;;(set-face-attribute 'default nil :height 160)
 ;;https://manateelazycat.github.io/emacs/2020/04/02/org-font.html
-(let ((emacs-font-size 17)
+(let ((emacs-font-size 16)
       (emacs-font-name "Fira Code"))
   (set-frame-font (format "%s-%s" (eval emacs-font-name) (eval emacs-font-size)))
   (set-fontset-font (frame-parameter nil 'font) 'unicode (eval emacs-font-name)))
@@ -72,7 +72,7 @@
   (defun org-buffer-face-mode-variable ()
     (interactive)
     (make-face 'width-font-face)
-    (set-face-attribute 'width-font-face nil :font "Sarasa Mono SC 16")
+    (set-face-attribute 'width-font-face nil :font "Sarasa Mono SC Nerd 16")
     (setq buffer-face-mode-face 'width-font-face)
     (buffer-face-mode))
 
