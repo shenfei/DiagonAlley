@@ -123,6 +123,7 @@ set wrap
 au BufRead,BufNewFile *.md setf markdown
 au BufRead,BufNewFile *.Rmd setf rmd
 au BufRead,BufNewFile *.dockerfile setf dockerfile
+au BufRead,BufNewFile *.script setf cs
 "augroup markdown
     "au!
     "au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
