@@ -1,5 +1,5 @@
 "================================================================
-"  Author: F. Shen (shen@fshen.org)
+"  Author: F. Shen (fshen@fshen.org)
 "================================================================
 
 "===============================
@@ -16,6 +16,9 @@ Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'majutsushi/tagbar'
 " 文件查找
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'kien/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -197,6 +200,11 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_max_height = 15
 let g:ctrlp_follow_symlinks = 1
 
+" Using Lua functions
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 let g:airline_theme = 'bubblegum'
 let g:airline_powerline_fonts = 1
