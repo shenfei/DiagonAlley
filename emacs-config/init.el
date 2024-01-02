@@ -52,8 +52,9 @@
 
 (setq make-backup-files nil)
 
-;;关闭文件左侧的行号显示，避免大文件的时候卡顿
-(global-linum-mode 0)
+;; Disable line number to avoid slowing down emacs
+(when (version<= "29.0.0" emacs-version)
+  (global-display-line-numbers-mode 0))
 
 ;;在 mode-line 中显示行号和列号
 (line-number-mode 1)
@@ -72,7 +73,8 @@
   (defun org-buffer-face-mode-variable ()
     (interactive)
     (make-face 'width-font-face)
-    (set-face-attribute 'width-font-face nil :font "Sarasa Mono SC Nerd 16")
+    (set-face-attribute 'width-font-face nil :font "Sarasa Term SC Nerd 16")
+    (advice-add #'org-string-width :override #'org--string-width-1)
     (setq buffer-face-mode-face 'width-font-face)
     (buffer-face-mode))
 
