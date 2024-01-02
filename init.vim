@@ -178,9 +178,6 @@ colorscheme gruvbox
 " begin of plugin config
 "===============================
 
-
-let g:python3_host_prog = '/usr/local/bin/python3'
-
 map <leader>tt :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc', '\.git', '\.svn', '\.o$']
 

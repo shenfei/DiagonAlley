@@ -1,11 +1,15 @@
 # -*- mode: org -*-
-# name: work log 
+# name: work log
 # key: wlog
 # --
 * `(format-time-string "%m/%d, %a")`
 ** Plan
 
 ** Work
+*** Routine
+**** Plan
+**** Outlook, Teams
+**** PR review
 
 ** Common Room
 *** Routine
