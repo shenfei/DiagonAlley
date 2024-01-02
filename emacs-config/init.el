@@ -231,6 +231,8 @@
 (setq org-todo-keywords
       '((sequence "TODO(t)" "BLOCK(b)" "|" "STAGE(s)" "DONE(d)" "POSTPONE(p)" "CANCEL(c)")))
 
+(setq org-image-actual-width nil)
+
 (global-set-key (kbd "C-c a") 'org-agenda)
 (evil-define-key '(normal insert) 'global (kbd "C-c i") 'org-clock-in)
 (evil-define-key '(normal insert) 'global (kbd "C-c o") 'org-clock-out)
