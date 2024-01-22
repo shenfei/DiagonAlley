@@ -1,5 +1,5 @@
 "================================================================
-"  Author: F. Shen (fshen@fshen.org)
+"  Author: F. Shen (code@idealvariety.com)
 "================================================================
 
 "===============================
@@ -17,7 +17,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'majutsushi/tagbar'
 " 文件查找
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'kien/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
