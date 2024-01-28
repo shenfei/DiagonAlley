@@ -108,8 +108,6 @@ set t_vb=
 set showmatch
 set mat=2
 
-set nofoldenable " disable folding
-
 " 缩进
 set expandtab  " 将 tab 自动转成空格; 使用 Ctrl + V + Tab 输入真的 tab"
 set smarttab
@@ -280,7 +278,7 @@ require'nvim-treesitter.configs'.setup {
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = true,
+    additional_vim_regex_highlighting = false,
 
     vim.api.nvim_set_hl(0, "@variable", { link = "Normal" }),
     vim.api.nvim_set_hl(0, "@function.python", { link = "GruvboxBlue" }),
@@ -288,6 +286,11 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+" Disable folding at startup.
+set nofoldenable
 
 "===============================
 " end of plugin config
