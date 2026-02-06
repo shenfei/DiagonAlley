@@ -33,7 +33,7 @@
 ;;最大化 Emacs 窗口
 (toggle-frame-maximized)
 
-(global-set-key (kbd "C-x k") 'kill-this-buffer)
+(global-set-key (kbd "C-x k") 'kill-current-buffer)
 
 ;;自动折行
 (setq truncate-lines nil)
