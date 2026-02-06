@@ -68,7 +68,6 @@ set ffs=unix,dos,mac
 scriptencoding utf-8
 set encoding=utf-8
 set fileencodings=utf-8,gbk,gb2312,big5,latin-1
-set termencoding=utf-8
 
 "===============================
 
